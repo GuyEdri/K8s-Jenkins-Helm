@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-weather
+spec:
+  replicas: {{ .Values.weatherApp.replicas }}
+  selector:
+    matchLabels:
+      app: weather
+  template:
+    metadata:
+      labels:
+        app: weather
+    spec:
+      containers:
+        - name: weather
+          image: {{ .Values.weatherApp.image }} # Replace with your private Docker image
+          env:
+            - name: BG_COLOR
+              valueFrom:
+                configMapKeyRef:
+                  name: {{.Values.weatherApp.BGcolor}}
+                  key: BG_COLOR
+      imagePullSecrets:
+        - name: docker-secret

@@ -1,0 +1,41 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: infinity
+  region: il-central-1
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t3.small
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 2
+    volumeSize: 20
+    # ssh:
+    #   allow: true
+    #   publicKeyPath: eks # Update this with your AWS key pair name
+    # iam:
+    #   attachPolicyARNs:
+    #     - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+    #     - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+        
+accessConfig:
+  bootstrapClusterCreatorAdminPermissions: true
+  authenticationMode: API_AND_CONFIG_MAP
+
+addons:
+- name: vpc-cni
+  attachPolicyARNs:
+    - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+- name: coredns
+- name: kube-proxy
+
+iam:
+  withOIDC: true
+  serviceAccounts:
+  - metadata:
+      name: aws-load-balancer-controller
+      namespace: kube-system
+    wellKnownPolicies:
+      awsLoadBalancerController: true
