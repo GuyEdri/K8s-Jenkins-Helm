@@ -37,15 +37,15 @@ AWS services, such as IAM and ALB, are utilized for authentication, authorizatio
 
 ## Getting Started
 
-1. Set Up Kubernetes Cluster
+### 1. Set Up Kubernetes Cluster
 
 Ensure you have a running Kubernetes cluster. Tools like Minikube or Kind can be used for local setups.
 
-2. Install Helm
+### 2. Install Helm
 
 Helm is a package manager for Kubernetes. Install it by following the official Helm installation guide.
 
-3. Deploy Jenkins Using Helm
+### 3. Deploy Jenkins Using Helm
 
 Add the Jenkins Helm repository:
 
@@ -62,13 +62,13 @@ helm install jenkins jenkins/jenkins --namespace jenkins
 
 For detailed instructions, refer to the Jenkins Helm Chart documentation.
 
-4. Configure AWS Integration
+### 4. Configure AWS Integration
 
 Use the awsalb.sh script to set up the AWS Application Load Balancer. Ensure you have the AWS CLI installed and configured.
 
 Apply the IAM policies defined in iam_policy.json to grant necessary permissions.
 
-5. Deploy Sample Application
+### 5. Deploy Sample Application
 
 Navigate to the my-apps/weather-app directory.
 
