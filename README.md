@@ -1,8 +1,8 @@
-K8s-Jenkins-Helm
+#K8s-Jenkins-Helm
 
 The K8s-Jenkins-Helm project provides a framework for deploying Jenkins on a Kubernetes cluster using Helm charts. This setup enables scalable and efficient continuous integration and continuous deployment (CI/CD) pipelines within a Kubernetes environment.
 
-Features
+#Features
 
 Kubernetes Deployment: Utilizes Kubernetes manifests (cluster.yaml) to define and manage the deployment of Jenkins and related services within the cluster.
 
@@ -12,7 +12,7 @@ AWS Integration: Includes scripts (awsalb.sh) and IAM policies (iam_policy.json)
 
 Sample Applications: Contains example applications (my-apps/weather-app) with corresponding Jenkinsfile configurations to demonstrate CI/CD pipelines.
 
-Repository Structure
+#Repository Structure
 
 my-apps/weather-app/: Sample application demonstrating CI/CD pipeline integration.
 
@@ -24,40 +24,8 @@ cluster.yaml: Kubernetes manifest for deploying Jenkins and related services.
 
 iam_policy.json: AWS IAM policy definitions for necessary permissions.
 
-Deployment Diagram
 
-Below is a conceptual diagram illustrating the deployment architecture:
-
-+---------------------+       +---------------------+
-|   Developer         |       |   AWS Services      |
-|   Workstation       |       |   (IAM, ALB)        |
-+---------------------+       +---------------------+
-            |                          |
-            |                          |
-            v                          v
-      +--------------------------------------+
-      |         Kubernetes Cluster           |
-      |                                      |
-      |   +----------------------------+     |
-      |   |   Jenkins Deployment       |     |
-      |   |                            |     |
-      |   |   +--------------------+   |     |
-      |   |   |   Jenkins Master   |   |     |
-      |   |   +--------------------+   |     |
-      |   |                            |     |
-      |   |   +--------------------+   |     |
-      |   |   |   Jenkins Agent(s) |   |     |
-      |   |   +--------------------+   |     |
-      |   +----------------------------+     |
-      |                                      |
-      |   +----------------------------+     |
-      |   |   Sample Application(s)    |     |
-      |   |   (e.g., Weather App)      |     |
-      |   +----------------------------+     |
-      |                                      |
-      +--------------------------------------+
-
-Explanation
+#Explanation
 
 Developers interact with the Jenkins Master to initiate CI/CD pipelines.
 
@@ -67,7 +35,7 @@ Sample applications, like the Weather App, are deployed and managed within the c
 
 AWS services, such as IAM and ALB, are utilized for authentication, authorization, and external access management.
 
-Getting Started
+#Getting Started
 
 1. Set Up Kubernetes Cluster
 
@@ -79,16 +47,16 @@ Helm is a package manager for Kubernetes. Install it by following the official H
 
 3. Deploy Jenkins Using Helm
 
-Add the Jenkins Helm repository:
+##Add the Jenkins Helm repository:
 
 helm repo add jenkins https://charts.jenkins.io
 helm repo update
 
-Create a namespace for Jenkins:
+##Create a namespace for Jenkins:
 
 kubectl create namespace jenkins
 
-Install Jenkins:
+##Install Jenkins:
 
 helm install jenkins jenkins/jenkins --namespace jenkins
 
