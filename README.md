@@ -56,7 +56,7 @@ helm repo update
 
 kubectl create namespace jenkins
 
-##Install Jenkins:
+## Install Jenkins:
 
 helm install jenkins jenkins/jenkins --namespace jenkins
 
