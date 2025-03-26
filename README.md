@@ -47,16 +47,16 @@ Helm is a package manager for Kubernetes. Install it by following the official H
 
 3. Deploy Jenkins Using Helm
 
-## Add the Jenkins Helm repository:
+Add the Jenkins Helm repository:
 
 helm repo add jenkins https://charts.jenkins.io
 helm repo update
 
-## Create a namespace for Jenkins:
+Create a namespace for Jenkins:
 
 kubectl create namespace jenkins
 
-## Install Jenkins:
+Install Jenkins:
 
 helm install jenkins jenkins/jenkins --namespace jenkins
 
